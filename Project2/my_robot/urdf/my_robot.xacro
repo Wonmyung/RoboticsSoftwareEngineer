@@ -6,6 +6,7 @@
 
     <link name="robot_footprint"></link>
 
+    <!-- Joint decalaration -->
     <joint name="robot_footprint_joint" type="fixed">
         <origin xyz="0 0 0" rpy= "0 0 0" />
         <parent link="robot_footprint"/>
@@ -13,7 +14,7 @@
     </joint>
 
     <joint name="left_wheel_hinge" type="continuous">
-        <origin xyz="0 0.15 0" rpy= "0 0 0" />
+        <origin xyz="0 0.325 0" rpy= "0 0 0" />
         <parent link="chassis"/>
         <child link="left_wheel"/>
         <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -22,7 +23,7 @@
     </joint>
 
     <joint name="right_wheel_hinge" type="continuous">
-        <origin xyz="0 -0.15 0" rpy= "0 0 0" />
+        <origin xyz="0 -0.325 0" rpy= "0 0 0" />
         <parent link="chassis"/>
         <child link="right_wheel"/>
         <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -44,6 +45,7 @@
         <axis xyz="0 1 0" rpy="0 0 0"/>
     </joint>
 
+    <!-- Link decalaration -->
     <link name='chassis'>
         <pose>0 0 0.1 0 0 0</pose>
 
@@ -60,46 +62,47 @@
         <collision name='collision'>
             <origin xyz="0 0 0" rpy=" 0 0 0"/>
             <geometry>
-                <box size = ".4 .2 .1"/>
+                <box size = ".4 .6 .1"/>
             </geometry>
         </collision>
 
         <visual name='chassis_visual'>
             <origin xyz="0 0 0" rpy=" 0 0 0"/>
             <geometry>
-                <box size = ".4 .2 .1"/>
+                <box size = ".4 .6 .1"/>
             </geometry>         
         </visual>
 
         <collision name='back_caster_collision'>
             <origin xyz="-0.15 0 -0.05" rpy="0 0 0"/>
             <geometry>
-                <sphere radius="0.0499"/>
+                <sphere radius="0.0699"/>
             </geometry>  
         </collision>
 
         <visual name='back_caster_visual'>
             <origin xyz="-0.15 0 -0.05" rpy="0 0 0"/>
             <geometry>
-                <sphere radius="0.05"/>
+                <sphere radius="0.07"/>
             </geometry>           
         </visual>
 
         <collision name='front_caster_collision'>
             <origin xyz="0.15 0 -0.05" rpy="0 0 0"/>
             <geometry>
-                <sphere radius="0.0499"/>
+                <sphere radius="0.0699"/>
             </geometry>  
         </collision>
 
         <visual name='front_caster_visual'>
             <origin xyz="0.15 0 -0.05" rpy="0 0 0"/>
             <geometry>
-                <sphere radius="0.05"/>
+                <sphere radius="0.07"/>
             </geometry>           
         </visual>
 
     </link>
+
 
     <link name='left_wheel'>
         <inertial>
@@ -115,14 +118,14 @@
         <collision name='left_wheel_collision'>
             <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
             <geometry>
-                <cylinder radius="0.1" length="0.05"/>
+                <cylinder radius="0.12" length="0.05"/>
             </geometry>  
         </collision>
 
         <visual name='left_wheel_visual'>
             <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
             <geometry>
-                <cylinder radius="0.1" length="0.05"/>
+                <cylinder radius="0.12" length="0.05"/>
             </geometry>           
         </visual>
     </link>
@@ -141,14 +144,14 @@
         <collision name='right_wheel_collision'>
             <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
             <geometry>
-                <cylinder radius="0.1" length="0.05"/>
+                <cylinder radius="0.12" length="0.05"/>
             </geometry>  
         </collision>
 
         <visual name='right_wheel_visual'>
             <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
             <geometry>
-                <cylinder radius="0.1" length="0.05"/>
+                <cylinder radius="0.12" length="0.05"/>
             </geometry>           
         </visual>
     </link>
@@ -205,5 +208,22 @@
             </geometry>           
         </visual>
     </link>
+
+    <!-- Color decalaration -->
+    <gazebo reference="chassis">
+        <material>Gazebo/Orange</material>
+    </gazebo>
+
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Indigo</material>
+    </gazebo>
+
+    <gazebo reference="right_wheel">
+        <material>Gazebo/Indigo</material>
+    </gazebo>
+
+    <gazebo reference="camera">
+        <material>Gazebo/LightOn</material>
+    </gazebo>
 
 </robot>

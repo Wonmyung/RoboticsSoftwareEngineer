@@ -31,9 +31,9 @@ void process_image_callback(const sensor_msgs::Image img)
     float lin_x = 0.f;
     float ang_z = 0.f;
     
-    for(int i = 0; i < (img.height * img.step); i++)
+    for(int i = 0; i < (img.height * img.step); i+=3)
     {
-        if(img.data[i] == white_pixel)
+        if((img.data[i] == white_pixel) && (img.data[i+1] == white_pixel) && (img.data[i+2] == white_pixel))
         {
             trgt_imgStep = i % img.step;
             break;
